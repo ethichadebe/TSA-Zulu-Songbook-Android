@@ -130,24 +130,52 @@ fun SplashScreen(navController: NavController) {
 fun TableOfContentsPage() {
     var text by rememberSaveable { mutableStateOf("") }
     var active by rememberSaveable { mutableStateOf(false) }
+    LazyColumn(
+        modifier = Modifier
+            .padding(6.dp),
+    ) {
+        val songGroupRepo = SongGroupRepository()
+        item {
+            Text(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(start = 10.dp, top = 50.dp, end = 10.dp, bottom = 20.dp),
+                fontSize = 14.sp,
+                textAlign = TextAlign.Center,
+                text = "ISIZULU\nAMACULO-SONGS", //"${song.group}",
+                color = Color.Black,
+                fontWeight = FontWeight.Bold,
+                fontFamily = FontFamily.Serif
+            )
+        }
 
+        items(items = songGroupRepo.getSongGroup(1)) { songGroup ->
+            TableOfContentsItem(songGroup)
+        }
+
+        item {
+            Text(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(10.dp),
+                fontSize = 14.sp,
+                textAlign = TextAlign.Center,
+                text = "AMACULWANA-CHORUSESQUIU", //"${song.group}",
+                color = Color.Black,
+                fontWeight = FontWeight.Bold,
+                fontFamily = FontFamily.Serif
+            )
+        }
+
+        items(items = songGroupRepo.getSongGroup(2)) { songGroup ->
+            TableOfContentsItem(songGroup)
+        }
+    }
 
     Column(
         //contentPadding = PaddingValues(start = 16.dp, top = 72.dp, end = 16.dp, bottom = 16.dp),
         verticalArrangement = Arrangement.spacedBy(8.dp)
     ) {
-        Text(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(start = 10.dp, top = 50.dp, end = 10.dp, bottom = 20.dp),
-            fontSize = 14.sp,
-            textAlign = TextAlign.Center,
-            text = "ISIZULU\nAMACULO-SONGS", //"${song.group}",
-            color = Color.Black,
-            fontWeight = FontWeight.Bold,
-            fontFamily = FontFamily.Serif
-        )
-
         val songGroupRepo = SongGroupRepository()
 
         LazyColumn() {
@@ -155,18 +183,6 @@ fun TableOfContentsPage() {
                 TableOfContentsItem(songGroup)
             }
         }
-
-        Text(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(10.dp),
-            fontSize = 14.sp,
-            textAlign = TextAlign.Center,
-            text = "AMACULWANA-CHORUSESQUIU", //"${song.group}",
-            color = Color.Black,
-            fontWeight = FontWeight.Bold,
-            fontFamily = FontFamily.Serif
-        )
 
         LazyColumn() {
             items(items = songGroupRepo.getSongGroup(2)) { songGroup ->
