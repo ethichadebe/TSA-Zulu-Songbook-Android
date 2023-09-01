@@ -1,6 +1,5 @@
 package com.example.tsazulusongbook
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -9,6 +8,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
@@ -31,9 +31,10 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
 import com.example.tsazulusongbook.model.Song
 import com.example.tsazulusongbook.ui.theme.TSAZuluSongBookTheme
 
@@ -42,7 +43,8 @@ class SongActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             TSAZuluSongBookTheme {
-                DisplaySong(intent.getSerializableExtra("chosenSong") as Song)
+                val navController = rememberNavController()
+                DisplaySong(navController, intent.getSerializableExtra("chosenSong") as Song)
             }
         }
     }
@@ -50,70 +52,68 @@ class SongActivity : ComponentActivity() {
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun MyUI(group: String) {
+fun MyUI(navController: NavController, group: String) {
     LocalContext.current.applicationContext
 
     Surface(shadowElevation = 3.dp) {
-        CenterAlignedTopAppBar(
-            title = {
-                Text(
-                    text = group,
-                    fontFamily = FontFamily.Serif,
-                    fontWeight = FontWeight.Bold,
-                    fontSize = 14.sp,
-                    textAlign = TextAlign.Center,
-                    color = Black
-                )
-            }, colors = TopAppBarDefaults.smallTopAppBarColors(containerColor = White),
+        CenterAlignedTopAppBar(title = {
+            Text(
+                text = group,
+                fontFamily = FontFamily.Serif,
+                fontWeight = FontWeight.Bold,
+                fontSize = 14.sp,
+                textAlign = TextAlign.Center,
+                color = Black
+            )
+        },
+            colors = TopAppBarDefaults.smallTopAppBarColors(containerColor = White),
             navigationIcon = {
-                val context = LocalContext.current
                 IconButton(onClick = {
-                    val intent = Intent(context, MainActivity::class.java)
-                    context.startActivity(intent)
-                }
-                ) {
+                    navController.popBackStack()
+                }) {
                     Icon(
                         imageVector = Icons.Default.ArrowBack,
-                        contentDescription = "Menu", tint = Black
+                        contentDescription = "Menu",
+                        tint = Black
                     )
                 }
-            }
-        )
+            })
     }
 }
 
 
 @Composable
-fun DisplaySong(song: Song) {
-    Column {
+fun DisplaySong(navController: NavController, song: Song) {
+    Column(
+        modifier = Modifier
+            .background(White)
+            .fillMaxSize(),
+        verticalArrangement = Arrangement.SpaceBetween,
+        horizontalAlignment = Alignment.Start,
+    ) {
         //Song Group
-        MyUI(song.group)
+        MyUI(navController, song.group)
 
         Column(
             modifier = Modifier
-                .verticalScroll(rememberScrollState())
-                .background(White)
-                .fillMaxSize(),
+                .verticalScroll(rememberScrollState()),
             verticalArrangement = Arrangement.SpaceBetween,
             horizontalAlignment = Alignment.Start,
         ) {
 
             Row(
                 modifier = Modifier
+                    .fillMaxSize()
                     .padding(start = 20.dp, top = 20.dp, end = 20.dp),
             ) {
                 Text(
-                    fontSize = 26.sp,
-                    text = "${song.number}", //"${song.group}",
-                    color = Black,
-                    fontWeight = FontWeight.Bold,
-                    fontFamily = FontFamily.Serif
+                    fontSize = 26.sp, text = "${song.number}", //"${song.group}",
+                    color = Black, fontWeight = FontWeight.Bold, fontFamily = FontFamily.Serif
                 )
 
                 Text(
                     text = song.title, //"${song.group}",
-                    modifier = Modifier
-                        .padding(start = 20.dp),
+                    modifier = Modifier.padding(start = 20.dp),
                     color = Black,
                     fontSize = 16.sp,
                     fontWeight = FontWeight.Bold,
@@ -123,12 +123,13 @@ fun DisplaySong(song: Song) {
 
             Row(
                 modifier = Modifier
-                    .padding(20.dp),
+                    .padding(20.dp)
+                    .fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween,
             ) {
                 Text(
                     text = "Tune: ",
-                    modifier = Modifier
-                        .padding(start = 40.dp),
+                    modifier = Modifier.padding(start = 40.dp),
                     color = Black,
                     fontWeight = FontWeight.Normal,
                     fontSize = 12.sp,
@@ -158,8 +159,7 @@ fun DisplaySong(song: Song) {
                     Text(
                         text = song.chorus, //"${song.group}",
                         color = Black,
-                        modifier = Modifier
-                            .padding(start = 40.dp, top = 20.dp, bottom = 20.dp),
+                        modifier = Modifier.padding(start = 40.dp, top = 20.dp, bottom = 20.dp),
                         fontSize = 14.sp,
                         fontWeight = FontWeight.Normal,
                         fontFamily = FontFamily.Serif
@@ -169,15 +169,13 @@ fun DisplaySong(song: Song) {
                     Text(
                         text = "${i + 1}. ", //"${song.group}",
                         color = Black,
-                        modifier = Modifier
-                            .padding(start = 40.dp, top = 20.dp),
+                        modifier = Modifier.padding(start = 40.dp, top = 20.dp),
                         fontWeight = FontWeight.Normal,
                         fontFamily = FontFamily.Serif
                     )
                     Text(
                         text = song.verses[i],
-                        modifier = Modifier
-                            .padding(start = 10.dp, top = 20.dp),
+                        modifier = Modifier.padding(start = 10.dp, top = 20.dp),
                         color = Black,
                         fontSize = 14.sp,
                         fontWeight = FontWeight.Normal,
@@ -186,39 +184,5 @@ fun DisplaySong(song: Song) {
                 }
             }
         }
-    }
-}
-
-@Preview(showBackground = true)
-@Composable
-fun DisplaySongPreview() {
-    TSAZuluSongBookTheme {
-        DisplaySong(
-            Song(
-                "USINDISO-SALVATION\nICULO LOMQALI- THE FOUNDER'S SONG", 1,
-                "Lwandle loSindiso, thand' olukhulu O,\n Boundless Salvation",
-                listOf(
-                    "My Jesus, I love thee, Cossar, 556.", " St Denio, 569,"
-                ), "(E 256)", listOf(
-                    "Lwandle loSindiso! thand' olukhulu\n" +
-                            "Musa owehla noJesu phezulu:\n" +
-                            "Uhlenga izwe, uphiwe ngesihle, \n" +
-                            "Umpompozel' abantu, umpopozel' abantu Umpompozel' abantu, woz'ungihlanze.",
-                    "Izono ziningi, zinamabala, \n" +
-                            "Nezinyembezi zami ziyashisa; \n" +
-                            "Kodwa akusizi luth' ukukhala, \n" +
-                            "Woza, ungihlanze; woza, ungihlanze; \n" +
-                            "Woza, ungihlanze; ungangihlanza.",
-                    "Ngikulangazela Iwandle lomusa, \n" +
-                            "Ogwini ngibhek' amanz' okuphila. \n" +
-                            "Namhla ngifikile, bheka ngikhona, \n" +
-                            "Angiyikubuya, angiyikubuya, \n" +
-                            "Angiyikubuya, ngingakahlanzwa,",
-                    "Ayahamb'amanzi, sengiyangena, \n" +
-                            "Ngizwa uSomandla, wongisindisa. \n" +
-                            "Manje ngiyakholwa, ngikhululwa nguye, Ngicwilil' emanzini, ngicwilil' emanzini, Ngicwilil' emanzini, sengihlanziwe."
-                ), ""
-            )
-        )
     }
 }

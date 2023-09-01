@@ -20,10 +20,6 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -128,8 +124,6 @@ fun SplashScreen(navController: NavController) {
 
 @Composable
 fun TableOfContentsPage() {
-    var text by rememberSaveable { mutableStateOf("") }
-    var active by rememberSaveable { mutableStateOf(false) }
     LazyColumn(
         modifier = Modifier
             .padding(6.dp),
@@ -140,7 +134,7 @@ fun TableOfContentsPage() {
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(start = 10.dp, top = 50.dp, end = 10.dp, bottom = 20.dp),
-                fontSize = 14.sp,
+                fontSize = 16.sp,
                 textAlign = TextAlign.Center,
                 text = "ISIZULU\nAMACULO-SONGS", //"${song.group}",
                 color = Color.Black,
@@ -158,7 +152,7 @@ fun TableOfContentsPage() {
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(10.dp),
-                fontSize = 14.sp,
+                fontSize = 16.sp,
                 textAlign = TextAlign.Center,
                 text = "AMACULWANA-CHORUSESQUIU", //"${song.group}",
                 color = Color.Black,
@@ -169,25 +163,6 @@ fun TableOfContentsPage() {
 
         items(items = songGroupRepo.getSongGroup(2)) { songGroup ->
             TableOfContentsItem(songGroup)
-        }
-    }
-
-    Column(
-        //contentPadding = PaddingValues(start = 16.dp, top = 72.dp, end = 16.dp, bottom = 16.dp),
-        verticalArrangement = Arrangement.spacedBy(8.dp)
-    ) {
-        val songGroupRepo = SongGroupRepository()
-
-        LazyColumn() {
-            items(items = songGroupRepo.getSongGroup(1)) { songGroup ->
-                TableOfContentsItem(songGroup)
-            }
-        }
-
-        LazyColumn() {
-            items(items = songGroupRepo.getSongGroup(2)) { songGroup ->
-                TableOfContentsItem(songGroup)
-            }
         }
     }
 }
