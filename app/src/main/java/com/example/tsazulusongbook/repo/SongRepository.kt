@@ -885,6 +885,146 @@ class SongRepository {
             "(E 301)",
             listOf(
                 "Mus' ukungidlula, Nkosi\nNgikhala kuwe,\nNxa ubabusis abanye,\nUngangidluli",
+                "Ngiguqil' esihlalweni\nSomusa manje:\nNgiyavum' izono zami\nNgithethelele.",
+                "Ngiyethemb' umusa wakho\nNezithembiso,\nEnhlizyweni ungelaphe\nNgalusindiso.",
+                "Ungukujabula kwami\nNgaphandle kwakho,\nNginobani emhlabeni\nNaseZulwini\n\n",
+            ),
+            "Jesu, Jesu, ngikhala kuwe;\nNxa ubabusis' abanye,\nUngangidluli"
+        ),
+
+        Song(
+            "USINDISO",
+            51,
+            "Dwala eliphakade\nRock of ages cleft for me",
+            listOf(
+                "Wells, 318.","Norwood, 311.","Coles, 305.","Spanish chant, 317.","Toplady, 316.","Tyndal, 317."
+            ),
+            "(E 302)",
+            listOf(
+                "Dwala eliphakade,\nMangizifihle kuwe;\nAmanzi nal' igazi\nKwavel' ohlangothini;\n" +
+                        "Kongiphilisa kanye,\nNgibemhlophe, ngisinde.",
+                "Kukhala nokuzama\nKungengihlenge neze;\nNguwe wedwa onakho\nUkuhlawul' izono;\nAngilethe lutho nje,\n" +
+                        "Ngibambelela kuwe.",
+                "Uma ngidlula lapha;\nNxa ngicinywa ukufa,\nSengenyukel' ekhaya;\n'Mahluleli, ngombona\n" +
+                        "Dwala eliphakade,\nNgiyozisitha kuwe.\n\n",
+            ),
+            ""
+        ),
+
+        Song(
+            "USINDISO",
+            52,
+            "Zosuswa ngan' izono?\nWhat can wash away my sin?",
+            listOf(
+                "Nothing but the blood of Jesus, 328."
+            ),
+            "(E 306)",
+            listOf(
+                "Zosuswa ngan' izono?\n'Gazi likaJesu lodwa.\nNgingahlanzwa kanjani? \nGazi likaJesu lodwa.",
+                "Ngolungiswa ngani na?\n'Gazi likaJesu lodwa.\nNgingabi osolekayo..\n'Gazi likaJesu lodwa.",
+                "Kungabaza koqedwa\n'Gazi likaJesu lodwa.\nNgiphile nangethemba\n'Gazi likaJesu lodwa.",
+                "Ngoqiniswa ngani na?\n'Gazi likaJesu lodwa.\nNgingabi nal' icala\n'Gazi likaJesu lodwa.",
+                "Ngonqoba emhlabeni,\n'Gazi likaJesu lodwa.\nNgingasanak' okwami\n'Gazi likaJesu lodwa.\n\n",
+            ),
+            "Ngifuna lomthombo\nOzigezisayo.\nAwekho amandla\nNjengegazi likaJesu."
+        ),
+
+        Song(
+            "USINDISO",
+            53,
+            "Ngangisezonweni, ngakhishwa nguJesu\nOnce I was far in sin ",
+            listOf(
+                "Down where the living waters, 233.","Asccalon, 232."
+            ),
+            "(E 374)",
+            listOf(
+                "Ngangisezonweni,\nNgakhishwa nguJesu\nNgasemanzini aphilayo:\nWangenza ngabona,\nNgabanokukhanya\nNgasemanzini aphilayo:",
+                "Angiyukuduka,\nNxa uJes' chola,\nNgasemanzini aphilayo:\nUlithemba lami,\nNosindiso Iwami,\nNgasemanzini aphilayo:",
+                "Nxa ngiqed' ukulwa,\nNgiyakuphumula,\nNgasemanzini aphilayo:\nNebandla lezulu,\nNgodum olukhulu,\nNgasemanzini' aphilayo.\n\n",
+            ),
+            "Ngasemanzini aphilayo:\nNgasemanzini aphilayo:\nNgisekukhanyeni,\nNgilwela iNkosi,\nNgasemanzini aphilayo."
+        ),
+
+        Song(
+            "USINDISO",
+            54,
+            "Kuhle uthethelelwe lingakashon' ilanga\nYou must have your sins forgive n",
+            listOf(
+                "Ere the sun goes down, 641."
+            ),
+            "(E 913)",
+            listOf(
+                "Kuhle uthethelelwe\nLingakashon' ilanga,\nUm' uthand' ukungena\nEkhaya uma lishona.\nKhala kuThixo manje,\n" +
+                        "Ngob' ithuba liyadlula;\nEngcwabeni uzoshona\nLapho lishona.",
+                "Amathub' ayophela\nNxa ilanga lishonile.\nKumbe ngelokugcina\nUkushona lelilanga;\nKodlula lelithuba\n" +
+                        "Usindiso uludele,\nKhon' ukufa kokuzuma\nLapho lishona.",
+                "Abadala nabasha\nBokuma phambi kwakhe.\nBambon' uMahluleli\nNenkosi' eyadelwayo.\nIzincwadi zopkenywa\n" +
+                        "Izono zonke zovela,\nUzophepha yini wena\nLapho lishona?\n\n",
+            ),
+            "Lingakashon ilanga,\nLingakashon' ilanga,\nSoni, woza kuJesu,\nLingakashoni."
+        ),
+
+        Song(
+            "USINDISO",
+            55,
+            "Ngilungise manje, Nkosi\nYour garments must be white as snow",
+            listOf(
+                "Prepare me, 121.","St Peter, 129."
+            ),
+            "(E 914)",
+            listOf(
+                "Ngilungise manje, Nkosi,\nNgikuhlangabeze,\nHlanza inhliziyo yami,\nNgingasolwa neze.",
+                "Jesu uzithethelele,\nZonk' izono zami,\nUmoya wakho uthele\nEnhliz'yweni yami.",
+                "Kuwe, Nkosi, sengiyeza\nSus' izono zami,\nNgisize ukukukhonza,\nNgenhliziyo yami.\n\n",
+            ),
+            "Msindisi, ngilungise,\nUkuze ngime phambi kwakho."
+        ),
+
+        Song(
+            "USINDISO",
+            56,
+            "Woza kuJesu ungaphuthi\nme to the Saviour, make no delay",
+            listOf(
+                "Make no Delay, 730."
+            ),
+            "",
+            listOf(
+                "Woza kuJesu ungaphuthi\nIzwi lakhe likhomb' indlela,\nLangaphakathi usenathi,\nEthi \"wozanini.\"",
+                "Woza kuJesu yizwa izwi,\nInhliziyo mayijabule,\nMasimkhethe abeyiNkosi,\nUngaphuthi, woza.",
+                "Yebo bakithi khumbulani\nYizwan' izwi lakhe, nilenze;\nSibizwa ngamazwi amnandi,\nWozan' eNkosini.\n\n",
+            ),
+            "Sothokoza nxa sihlangana,\nSidumisa, sihlabelela,\nNxa sibuthene, Nkosi, nawe,\nEkhay' eZulwini."
+        ),
+
+        Song(
+            "USINDISO",
+            57,
+            "Awu! moni uyangaphi?\nSinners, wither would you wander?",
+            listOf(
+                ""
+            ),
+            "",
+            listOf(
+                "Awu! moni uyangaphi?\nSewubangephi?\nKhumbula ke izinsuku\nSezimfushane,",
+                "Uyafunwa uSathane\nUbengowakhe;\nKodw' uJesu waf ukuze\nAkusindise.",
+                "Yizwa moni, usabizwa\nuJesu, woza;\nUkuba awusindiswa\nUzolahleka,",
+                "UJesu uzofikela\nUkwahlulela;\nAbantu bayohlulelwa\nNgalelolanga.",
+                "Wen' othanda ukusinda\nEsihogweni;\nMfun' uJesu ngokushesha,\nGuqa, thandaza.\n\n",
+            ),
+            "Nakh' ukufa kuseduze,\nNoMahluleli;\nPhendukani zoni, nonke\nNize eNkosini."
+        ),
+
+        Song(
+            "USINDISO",
+            58,
+            "Ncoma lendaba kaJesu\nYou can tell out the story",
+            listOf(
+                "You can tell out the sweet story, 869."
+            ),
+            "(E 384)",
+            listOf(
+                "Ncoma lendaba kaJesu,\nNoma usukuphi,\nXoxa ngeNkos' ephezulu,\nEsithande kabi.\nLendaba seyiligugu;\n" +
+                        "uJesu' unguMhlengi wethu\nUngayazisa lendaba\nWena lo!",
                 "",
                 "",
                 "",
@@ -893,6 +1033,131 @@ class SongRepository {
             ""
         ),
 
+        Song(
+            "USINDISO",
+            6,
+            "",
+            listOf(
+                ""
+            ),
+            "(E )",
+            listOf(
+                "",
+                "",
+                "",
+                "",
+                "\n\n",
+            ),
+            ""
+        ),
+
+        Song(
+            "USINDISO",
+            6,
+            "",
+            listOf(
+                ""
+            ),
+            "(E )",
+            listOf(
+                "",
+                "",
+                "",
+                "",
+                "\n\n",
+            ),
+            ""
+        ),
+
+        Song(
+            "USINDISO",
+            6,
+            "",
+            listOf(
+                ""
+            ),
+            "(E )",
+            listOf(
+                "",
+                "",
+                "",
+                "",
+                "\n\n",
+            ),
+            ""
+        ),
+
+        Song(
+            "USINDISO",
+            6,
+            "",
+            listOf(
+                ""
+            ),
+            "(E )",
+            listOf(
+                "",
+                "",
+                "",
+                "",
+                "\n\n",
+            ),
+            ""
+        ),
+
+        Song(
+            "USINDISO",
+            6,
+            "",
+            listOf(
+                ""
+            ),
+            "(E )",
+            listOf(
+                "",
+                "",
+                "",
+                "",
+                "\n\n",
+            ),
+            ""
+        ),
+
+        Song(
+            "USINDISO",
+            6,
+            "",
+            listOf(
+                ""
+            ),
+            "(E )",
+            listOf(
+                "",
+                "",
+                "",
+                "",
+                "\n\n",
+            ),
+            ""
+        ),
+
+        Song(
+            "USINDISO",
+            6,
+            "",
+            listOf(
+                ""
+            ),
+            "(E )",
+            listOf(
+                "",
+                "",
+                "",
+                "",
+                "\n\n",
+            ),
+            ""
+        ),
 
         Song(
             "ULWAZI NOBUFAKAZI",

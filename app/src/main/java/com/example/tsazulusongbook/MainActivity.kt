@@ -44,17 +44,21 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             TSAZuluSongBookTheme {
-                Navigation()
+                Navigation(intent.getBooleanExtra("backPressed", false))
             }
         }
     }
 }
 
 @Composable
-fun SplashScreen(navController: NavController) {
+fun SplashScreen(backpressed: Boolean, navController: NavController) {
     LaunchedEffect(key1 = true) {
-        delay(3000L)
-        navController.navigate("main_screen")
+        if (backpressed) {
+            navController.navigate("main_screen")
+        } else {
+            delay(2000L)
+            navController.navigate("main_screen")
+        }
     }
 
     Box(
@@ -169,11 +173,11 @@ fun TableOfContentsPage() {
 
 
 @Composable
-fun Navigation() {
+fun Navigation(backpressed: Boolean) {
     val navController = rememberNavController()
     NavHost(navController = navController, startDestination = "splash_screen") {
         composable("splash_screen") {
-            SplashScreen(navController)
+            SplashScreen(backpressed, navController)
         }
         composable("main_screen") {
             Column(

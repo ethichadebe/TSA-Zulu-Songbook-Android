@@ -1,5 +1,6 @@
 package com.example.tsazulusongbook
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -33,8 +34,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavController
-import androidx.navigation.compose.rememberNavController
 import com.example.tsazulusongbook.model.Song
 import com.example.tsazulusongbook.ui.theme.TSAZuluSongBookTheme
 
@@ -43,8 +42,7 @@ class SongActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             TSAZuluSongBookTheme {
-                val navController = rememberNavController()
-                DisplaySong(navController, intent.getSerializableExtra("chosenSong") as Song)
+                DisplaySong(intent.getSerializableExtra("chosenSong") as Song)
             }
         }
     }
@@ -52,8 +50,9 @@ class SongActivity : ComponentActivity() {
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun MyUI(navController: NavController, group: String) {
-    LocalContext.current.applicationContext
+fun MyUI(group: String) {
+    val context = LocalContext.current
+    context.applicationContext
 
     Surface(shadowElevation = 3.dp) {
         CenterAlignedTopAppBar(title = {
@@ -69,7 +68,9 @@ fun MyUI(navController: NavController, group: String) {
             colors = TopAppBarDefaults.smallTopAppBarColors(containerColor = White),
             navigationIcon = {
                 IconButton(onClick = {
-                    navController.popBackStack()
+                    val intent = Intent(context, MainActivity::class.java)
+                    intent.putExtra("backPressed", true)
+                    context.startActivity(intent)
                 }) {
                     Icon(
                         imageVector = Icons.Default.ArrowBack,
@@ -83,7 +84,7 @@ fun MyUI(navController: NavController, group: String) {
 
 
 @Composable
-fun DisplaySong(navController: NavController, song: Song) {
+fun DisplaySong(song: Song) {
     Column(
         modifier = Modifier
             .background(White)
@@ -92,7 +93,7 @@ fun DisplaySong(navController: NavController, song: Song) {
         horizontalAlignment = Alignment.Start,
     ) {
         //Song Group
-        MyUI(navController, song.group)
+        MyUI(song.group)
 
         Column(
             modifier = Modifier

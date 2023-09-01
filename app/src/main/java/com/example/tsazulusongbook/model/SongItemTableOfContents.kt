@@ -22,7 +22,7 @@ import com.example.tsazulusongbook.ui.theme.TSAZuluSongBookTheme
 
 @Composable
 fun SongItemTableOfContents(song: Song) {
-    val context = LocalContext.current
+        val context = LocalContext.current
     Row(
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.SpaceBetween,
